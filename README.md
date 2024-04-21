@@ -1,20 +1,41 @@
 # SDG Analyzer
 
-## Usage
+### Introduction
+SDG Analyzer is a tool designed to analyze text documents and classify them according to the United Nations Sustainable Development Goals (SDGs). It extracts keywords from the input text, matches them with the SDG categories, and provides a weighted distribution of SDG relevance based on the extracted keywords.
 
-1. 用一個乾淨的環境
-2. 進到 code 資料夾裡面
-3. `pip install -r requirement.txt`
-4. `python .\build.py`
-5. 跑完你會看到多了一個 model 資料夾，裡面會有三個檔案
-6. 前往 flask 資料夾
-7. `python .\test_fast.py`
-8. 前往 http://127.0.0.1:5000 就可以用了(沒意外的話)
+### Features
+- Keyword Extraction: Utilizes CKIP Transformers for Chinese text and KeyBERT for English text to extract relevant keywords from input documents.
+- SDG Classification: Matches extracted keywords with pre-defined SDG categories using SentenceTransformer for word embeddings and cosine similarity for classification.
+- Web Interface: Provides a user-friendly web interface powered by Flask framework for easy interaction.
+- Visualization: Utilizes Highcharts for graphical representation of SDG distribution.
 
----
+### Installation
+1. Set up a clean environment.
+2. Navigate to the `code` directory.
+3. Install the required dependencies by running:
+   ```
+   pip install -r requirement.txt
+   ```
+4. Run the build script to download necessary models:
+   ```
+   python build.py
+   ```
+   This will create a `model` directory containing required model files.
 
-**如果想要跑慢一點的話可以省略 4.，然後 7.變成`python .\test.py`即可**
+### Usage
+1. Navigate to the `flask` directory.
+2. Run the Flask server by executing:
+   ```
+   python test_fast.py
+   ```
+3. Access the web interface by opening a browser and visiting [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
----
+### Notes
+- For faster performance, use `test_fast.py`. This loads pre-downloaded models locally.
+- If you prefer slower execution but don't want to download models, use `test.py`.
+- Ensure a stable internet connection for model downloads and updates.
 
-其他資訊可以看 code 資料夾裡的 README.md
+
+### Demo
+Watch the demo video on YouTube: [SDG Analyzer Demo](https://youtu.be/dgrzvQBPfAA)
+
