@@ -1,0 +1,62 @@
+
+body{
+    background-color: #cfe3fb;
+}
+
+nav{
+    height:0%;
+}
+/* .navbar{
+    background-color: DodgerBlue;
+} */
+/* 
+#Keyword_Intro{
+    width:800px;
+    height:100px;
+    position:absolute;
+	top:0%;
+    left:35%;
+} */
+
+h1 {
+    font-weight: bold;
+    font-size: 5rem;
+	color: black;
+}
+
+.test{
+    width: 100px;
+    height: 100px;
+}
+li a {
+    color:white !important;
+    background-image: url('home.jpg');
+    background-size: 100px;
+    display: block;
+	width: 100px;
+    height: 100px;
+    cursor: pointer;
+    
+}
+li a:hover{
+    background-color: lightyellow;
+    
+}
+.navbar-toggler{
+    background-color: lightgray;
+}
+
+.nav-link {
+    padding:20px;
+}
+
+
+
+@media (max-width:600px){
+    nav{
+        height:auto;
+    }
+    .nav-link {
+        padding:10px;
+    }
+}

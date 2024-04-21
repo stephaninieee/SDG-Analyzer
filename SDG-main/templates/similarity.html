@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>SDG Analyze</title>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!-- DataTable -->
+    <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <!-- loading -->
+    <script src="{{ url_for('static', filename='js/jquery.loading.js') }}"></script>
+    <!-- custom styles for dashboard -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <!-- input list area -->
+    <div class="form-group">
+        <div class="mb-3">
+            <label for="wordTextarea" class="form-label"><h3>Keywords List：</h1></label>
+            <textarea class="form-control" id="wordTextarea" rows="3" placeholder="word1,word2,word3, ..."></textarea>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row align-items-start">
+            <select class="form-select" id="lang" aria-label="Default select example">
+                <option selected>Choose Language</option>
+                <option value="en">English</option>
+                <option value="zh">ZH</option>
+            </select>
+            &nbsp;
+            <button type="button" class="btnSubmit" id="submit">Submit</button>
+        </div>
+    </div>
+
+    <div id="table" class="container-fluid" style="display: none;">
+        <table id='SDG_Table' class='display dataTable' width='100%'>
+            <thead>
+                <th>Keywords</th>
+                <th>SDGs Keywords</th>
+                <th>SDGs 關鍵字</th>
+                <th>Similarity</th>
+                <th>Weight</th>
+                <th>SDGs No.</th>
+            </thead>
+            <tfoot>
+                <th>Keywords</th>
+                <th>SDGs Keywords</th>
+                <th>SDGs 關鍵字</th>
+                <th>Similarity</th>
+                <th>Weight</th>
+                <th>SDGs No.</th>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row align-items-start">
+            <figure class="highcharts-figure">
+                <div id="sim_column_chart" class="col-md-4"></div>   
+                <div id="weight_column_chart" class="col-md-4"></div> 
+                <div id="amount_column_chart" class="col-md-4"></div>
+            </figure>
+        </div>
+    </div>
+
+ 
+
+
+    <script src="{{ url_for('static', filename='js/similarity.js') }}" type="text/javascript"></script>
+</body>
+</html>

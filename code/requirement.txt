@@ -1,0 +1,5 @@
+pandas
+keybert
+ckip-transformers
+sentence-transformers
+openpyxl

@@ -1,0 +1,50 @@
+ :root {
+     --ck-sample-base-spacing: 2em;
+     --ck-sample-color-white: #fff;
+     --ck-sample-color-green: #279863;
+     --ck-sample-color-blue: #1a9aef;
+     --ck-sample-container-width: 1285px;
+     --ck-sample-sidebar-width: 350px;
+     --ck-sample-editor-min-height: 400px;
+     --ck-sample-editor-z-index: 10;
+ }
+
+ .editor__editable,
+ /* Classic build. */
+ main .ck-editor[role='application'] .ck.ck-content,
+ /* Decoupled document build. */
+ .ck.editor__editable[role='textbox'],
+ .ck.ck-editor__editable[role='textbox'],
+ /* Inline & Balloon build. */
+ .ck.editor[role='textbox'] {
+     width: 100%;
+     background: #fff;
+     font-size: 1em;
+     line-height: 1.6em;
+     min-height: var(--ck-sample-editor-min-height);
+     padding: 1.5em 2em;
+ }
+
+ main .ck-editor[role='application'] {
+     overflow: auto;
+ }
+
+ /* word list textarea */
+ .textarea-container {
+     position: relative;
+ }
+
+ .textarea-container textarea {
+     width: 100%;
+     height: 100%;
+     min-width: 100%;
+     box-sizing: border-box;
+     border: 3px rgb(0, 0, 0) solid;
+     resize: none;
+ }
+
+ .textarea-container button {
+     position: absolute;
+     top: 3px;
+     right: 3px;
+ }

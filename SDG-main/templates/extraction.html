@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Keywords Extraction</title>
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <!--ckeditor  -->
+    <script src="{{ url_for('static', filename='js/ckeditor.js') }}"></script>
+     <!-- DataTable -->
+    <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- clipboard  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <!-- custom styles for dashboard -->
+    <script src="{{ url_for('static', filename='js/extraction.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/ckeditor.css') }}">
+
+</head>
+<body>
+    {% include 'header.html' %}
+    
+    <div class="container-fluid">
+        <div class="row row-editor">
+            <div class="editor-container">
+                <div class="editor">
+                    <textarea id="texteditor" name="content" placeholder="請在這裡填寫內容"></textarea>
+                </div>
+            </div>
+        </div></div>
+    </div>
+    
+    <br/>
+
+    <div class="container-fluid">
+        <div class="row align-items-start">
+            <select class="form-select" id="lang" aria-label="Default select example">
+                <option selected>Choose Language</option>
+                <option value="en">English</option>
+                <option value="zh">ZH</option>
+            </select>
+            &nbsp;
+            <button type="button" class="btn" id="submit">Submit</button>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="container-fluid">
+        <div id="datashow" class="row align-items-start" style="display: none;">
+            <div id="kytable" class="col-md-6">
+                <table id='Keyword_table' class='display dataTable' width='100%'>
+                    <thead>
+                        <th>Keywords</th>
+                        <th>Rate</th>
+                    </thead>
+                    <tfoot>
+                        <th>Keywords</th>
+                        <th>Rate</th>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <P><h2>Keywords List</h2></P>
+                <div class="textarea-container">
+                    <textarea id="foo" rows="5" value="https://github.com/zenorocha/clipboard.js.git"></textarea>
+                    <button class="btn" data-clipboard-target="#foo">
+                        <img src="{{ url_for('static', filename='images/clippy.svg') }}" alt="Copy to clipboard" style="width: 10px;height: 10px;">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <script>
+    var text;
+
+    ClassicEditor
+            .create( document.querySelector( '.editor' ), {
+                
+            toolbar: {
+                items: [
+                    'heading',
+                    '|',
+                    'bold',
+                    'italic',
+                    'link',
+                    'bulletedList',
+                    'numberedList',
+                    '|',
+                    'outdent',
+                    'indent',
+                    '|',
+                    'blockQuote',
+                    'insertTable',
+                    'undo',
+                    'redo'
+                ]
+            },
+            language: 'en',
+            table: {
+                contentToolbar: [
+                    'tableColumn',
+                    'tableRow',
+                    'mergeTableCells'
+                ]
+            },
+                licenseKey: '',
+                
+                
+                
+            } )
+            .then( editor => {
+                window.editor = editor;
+                text = editor;
+                
+                
+                
+            } )
+            .catch( error => {
+                console.error( 'Oops, something went wrong!' );
+                console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+                console.warn( 'Build id: ewzvfog76k0r-8ek9xs5l5res' );
+                console.error( error );
+            } );
+    </script>
+
+</body>
+</html>
